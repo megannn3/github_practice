@@ -24,4 +24,25 @@ def fetch_word():
     word = response.json()[0]
     return word
 
-print(fetch_word())
+def replace_letters(word):
+    word =word[0].upper()+word[1:]
+    if "a" in word:
+        word = word.replace("a","@")
+    if "i" in word:
+        word = word.replace("i","j")
+    if "b" in word:
+        word = word.replace("b","&")
+    if "l" in word:
+        word = word.replace("l","#")
+    if "k" in word:
+        word = word.replace("k","%")
+    return word
+
+def generate_password():
+    password = replace_letters(fetch_word())+replace_letters(fetch_word())
+    print(password)
+
+
+generate_password()
+
+
